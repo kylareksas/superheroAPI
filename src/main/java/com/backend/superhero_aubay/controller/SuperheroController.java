@@ -39,4 +39,11 @@ public class SuperheroController {
             List<SuperheroDto> superheroes = superheroService.getAllSuperheroes();
             return ResponseEntity.ok(superheroes);
         }
+
+        //Update superhero by ID REST API
+        @PutMapping ("{id}")
+        public ResponseEntity<SuperheroDto> updatedSuperhero(@PathVariable("id") Long superheroId, @RequestBody SuperheroDto updatedSuperhero){
+            SuperheroDto superheroDto = superheroService.updateSuperhero(superheroId,updatedSuperhero);
+            return ResponseEntity.ok(superheroDto);
+        }
 }

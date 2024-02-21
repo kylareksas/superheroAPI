@@ -8,4 +8,6 @@ public interface SuperheroService {
     SuperheroDto createSuperhero (SuperheroDto superheroDto);
     SuperheroDto getSuperheroById (Long superheroId);
     List<SuperheroDto> getAllSuperheroes();
+    SuperheroDto updateSuperhero (Long superheroId, SuperheroDto updatedSuperhero);
+
 }

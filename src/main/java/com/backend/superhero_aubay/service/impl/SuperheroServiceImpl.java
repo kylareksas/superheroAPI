@@ -41,5 +41,23 @@ public class SuperheroServiceImpl implements SuperheroService {
         return superheroes.stream().map((superhero -> SuperheroMapper.mapToSuperheroDto(superhero))).collect(Collectors.toList());
     }
 
+    @Override
+    public SuperheroDto updateSuperhero(Long superheroId, SuperheroDto updatedSuperhero) {
+
+        Superhero superhero = superheroRepository.findById(superheroId).orElseThrow(
+                () -> new ResourceNotFoundException("Superhero not found with given id: " + superheroId)
+        );
+
+        superhero.setAlias(updatedSuperhero.getAlias());
+        superhero.setFirstName(updatedSuperhero.getFirstName());
+        superhero.setLastName(updatedSuperhero.getLastName());
+        superhero.setTier(updatedSuperhero.getTier());
+        superhero.setRanking(updatedSuperhero.getRanking());
+
+        Superhero updatedSuperheroObj = superheroRepository.save(superhero);
+
+        return SuperheroMapper.mapToSuperheroDto(updatedSuperheroObj);
+    }
+
 
 }
