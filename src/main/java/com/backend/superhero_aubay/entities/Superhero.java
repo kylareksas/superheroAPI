@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "superhero")
+@Table(name = "superheroes")
 public class Superhero {
 
     @Id
@@ -28,7 +28,7 @@ public class Superhero {
     private String lastName;
 
     @Column(name = "tier")
-    private char tier;
+    private String tier;
 
     @Column(name = "ranking")
     private int ranking;

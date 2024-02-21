@@ -15,7 +15,7 @@ public class SuperheroDto {
     private String alias;
     private String firstName;
     private String lastName;
-    private char tier;
+    private String tier;
     private int ranking;
 }
 

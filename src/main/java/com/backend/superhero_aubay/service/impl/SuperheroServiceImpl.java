@@ -37,7 +37,7 @@ public class SuperheroServiceImpl implements SuperheroService {
 
     @Override
     public List<SuperheroDto> findAllByNameContainingIgnoreCase(String alias) {
-        List<Superhero> superheroes = superheroRepository.findAllByNameContainingIgnoreCase(alias.toUpperCase());
+        List<Superhero> superheroes = superheroRepository.findAllByAliasContainingIgnoreCase(alias.toUpperCase());
         return superheroes.stream().map((superhero -> SuperheroMapper.mapToSuperheroDto(superhero))).collect(Collectors.toList());
     }
 
@@ -57,7 +57,7 @@ public class SuperheroServiceImpl implements SuperheroService {
         superhero.setAlias(updatedSuperhero.getAlias());
         superhero.setFirstName(updatedSuperhero.getFirstName());
         superhero.setLastName(updatedSuperhero.getLastName());
-        superhero.setTier(updatedSuperhero.getTier());
+        superhero.setTier((updatedSuperhero.getTier()));
         superhero.setRanking(updatedSuperhero.getRanking());
 
         Superhero updatedSuperheroObj = superheroRepository.save(superhero);
