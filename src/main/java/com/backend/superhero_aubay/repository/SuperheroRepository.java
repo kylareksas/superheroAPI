@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface SuperheroRepository extends JpaRepository<Superhero,Long> {
-        List<Superhero> findAllByAliasContainingIgnoreCase(String alias);
+        //List<Superhero> findAllByAliasContainingIgnoreCase(String superheroAlias);
 }

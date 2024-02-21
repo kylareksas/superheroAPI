@@ -18,7 +18,6 @@ import java.util.List;
 public class SuperheroController {
 
         private SuperheroService superheroService;
-
         // Add Superhero REST API
         @PostMapping
         public ResponseEntity <SuperheroDto> createSuperhero (@RequestBody SuperheroDto superheroDto){
@@ -39,7 +38,12 @@ public class SuperheroController {
             List<SuperheroDto> superheroes = superheroService.getAllSuperheroes();
             return ResponseEntity.ok(superheroes);
         }
-
+        /*//Get all superheroes containing alias REST API
+        @GetMapping("{alias}")
+        public ResponseEntity<List<SuperheroDto>> getAllSuperheroesByAlias(@PathVariable("alias")String alias){
+            List<SuperheroDto> superheroes = superheroService.findAllByNameContainingIgnoreCase(alias);
+            return ResponseEntity.ok(superheroes);
+        }*/
         //Update superhero by ID REST API
         @PutMapping ("{id}")
         public ResponseEntity<SuperheroDto> updatedSuperhero(@PathVariable("id") Long superheroId, @RequestBody SuperheroDto updatedSuperhero){

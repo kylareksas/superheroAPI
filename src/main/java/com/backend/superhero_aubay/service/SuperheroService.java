@@ -7,7 +7,7 @@ import java.util.List;
 public interface SuperheroService {
     SuperheroDto createSuperhero (SuperheroDto superheroDto);
     SuperheroDto getSuperheroById (Long superheroId);
-    List<SuperheroDto> findAllByNameContainingIgnoreCase (String alias);
+    /*List<SuperheroDto> findAllByNameContainingIgnoreCase (String superheroAlias);*/
     List<SuperheroDto> getAllSuperheroes();
     SuperheroDto updateSuperhero (Long superheroId, SuperheroDto updatedSuperhero);
 

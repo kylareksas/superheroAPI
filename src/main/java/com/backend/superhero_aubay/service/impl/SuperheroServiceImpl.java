@@ -35,12 +35,12 @@ public class SuperheroServiceImpl implements SuperheroService {
         return SuperheroMapper.mapToSuperheroDto(superhero);
     }
 
-    @Override
+    /*@Override
     public List<SuperheroDto> findAllByNameContainingIgnoreCase(String alias) {
         List<Superhero> superheroes = superheroRepository.findAllByAliasContainingIgnoreCase(alias.toUpperCase());
         return superheroes.stream().map((superhero -> SuperheroMapper.mapToSuperheroDto(superhero))).collect(Collectors.toList());
     }
-
+*/
     @Override
     public List<SuperheroDto> getAllSuperheroes() {
         List<Superhero> superheroes = superheroRepository.findAll();
