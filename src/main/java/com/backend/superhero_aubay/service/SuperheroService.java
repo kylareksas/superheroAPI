@@ -4,4 +4,5 @@ import com.backend.superhero_aubay.dto.SuperheroDto;
 
 public interface SuperheroService {
     SuperheroDto createSuperhero (SuperheroDto superheroDto);
+    SuperheroDto getSuperheroById (Long superheroId);
 }

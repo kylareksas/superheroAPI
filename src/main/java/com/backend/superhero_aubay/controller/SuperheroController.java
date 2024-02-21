@@ -5,10 +5,7 @@ import com.backend.superhero_aubay.service.SuperheroService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 //Annotation to create constructors automatically
 @AllArgsConstructor
@@ -27,4 +24,10 @@ public class SuperheroController {
             return new ResponseEntity<>(savedSuperhero, HttpStatus.CREATED);
         }
 
+        //Get Superhero by ID REST API
+        @GetMapping ("{id}")
+        public ResponseEntity <SuperheroDto> getSuperheroById(@PathVariable("id") Long superheroId){
+            SuperheroDto superheroDto = superheroService.getSuperheroById(superheroId);
+            return ResponseEntity.ok(superheroDto);
+        }
 }

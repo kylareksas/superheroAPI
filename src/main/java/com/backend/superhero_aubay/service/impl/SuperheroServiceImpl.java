@@ -2,6 +2,7 @@ package com.backend.superhero_aubay.service.impl;
 
 import com.backend.superhero_aubay.dto.SuperheroDto;
 import com.backend.superhero_aubay.entities.Superhero;
+import com.backend.superhero_aubay.exception.ResourceNotFoundException;
 import com.backend.superhero_aubay.mapper.SuperheroMapper;
 import com.backend.superhero_aubay.repository.SuperheroRepository;
 import com.backend.superhero_aubay.service.SuperheroService;
@@ -22,5 +23,12 @@ public class SuperheroServiceImpl implements SuperheroService {
         Superhero superhero = SuperheroMapper.mapToSuperhero(superheroDto);
         Superhero savedSuperhero = superheroRepository.save(superhero);
         return SuperheroMapper.mapToSuperheroDto(savedSuperhero);
+    }
+
+    @Override
+    public SuperheroDto getSuperheroById(Long superheroId) {
+
+        Superhero superhero = superheroRepository.findById(superheroId).orElseThrow(() -> new ResourceNotFoundException("Superhero not found with given id: " + superheroId));
+        return SuperheroMapper.mapToSuperheroDto(superhero);
     }
 }
