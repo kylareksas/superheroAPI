@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 //Annotation to create constructors automatically
 @AllArgsConstructor
 //Annotation to enable http requests for this class
@@ -29,5 +31,12 @@ public class SuperheroController {
         public ResponseEntity <SuperheroDto> getSuperheroById(@PathVariable("id") Long superheroId){
             SuperheroDto superheroDto = superheroService.getSuperheroById(superheroId);
             return ResponseEntity.ok(superheroDto);
+        }
+
+        //Get all superheroes REST API
+        @GetMapping
+        public ResponseEntity<List<SuperheroDto>> getAllSuperheroes(){
+            List<SuperheroDto> superheroes = superheroService.getAllSuperheroes();
+            return ResponseEntity.ok(superheroes);
         }
 }

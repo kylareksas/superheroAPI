@@ -9,6 +9,9 @@ import com.backend.superhero_aubay.service.SuperheroService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /*
 Annotation to create the spring bean for this class
  */
@@ -31,4 +34,12 @@ public class SuperheroServiceImpl implements SuperheroService {
         Superhero superhero = superheroRepository.findById(superheroId).orElseThrow(() -> new ResourceNotFoundException("Superhero not found with given id: " + superheroId));
         return SuperheroMapper.mapToSuperheroDto(superhero);
     }
+
+    @Override
+    public List<SuperheroDto> getAllSuperheroes() {
+        List<Superhero> superheroes = superheroRepository.findAll();
+        return superheroes.stream().map((superhero -> SuperheroMapper.mapToSuperheroDto(superhero))).collect(Collectors.toList());
+    }
+
+
 }
