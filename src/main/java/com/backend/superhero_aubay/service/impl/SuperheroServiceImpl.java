@@ -59,5 +59,13 @@ public class SuperheroServiceImpl implements SuperheroService {
         return SuperheroMapper.mapToSuperheroDto(updatedSuperheroObj);
     }
 
+    @Override
+    public void deleteSuperhero(Long superheroId) {
+        Superhero superhero = superheroRepository.findById(superheroId).orElseThrow(
+                () -> new ResourceNotFoundException("Superhero not found with given id: " + superheroId)
+        );
+
+        superheroRepository.deleteById(superheroId);
+    }
 
 }

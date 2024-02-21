@@ -46,4 +46,11 @@ public class SuperheroController {
             SuperheroDto superheroDto = superheroService.updateSuperhero(superheroId,updatedSuperhero);
             return ResponseEntity.ok(superheroDto);
         }
+
+        //delete superhero by Id REST API
+        @DeleteMapping ("{id}")
+        public ResponseEntity<String> deleteSuperhero(@PathVariable("id")Long superheroId){
+            superheroService.deleteSuperhero(superheroId);
+            return ResponseEntity.ok("Superhero deleted");
+        }
 }

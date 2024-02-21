@@ -10,4 +10,5 @@ public interface SuperheroService {
     List<SuperheroDto> getAllSuperheroes();
     SuperheroDto updateSuperhero (Long superheroId, SuperheroDto updatedSuperhero);
 
+    void deleteSuperhero(Long superheroId);
 }
